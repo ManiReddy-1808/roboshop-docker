@@ -30,10 +30,10 @@ services:
     ports:
       - "80:80"
     depends_on:
-      - catalogue
-      - user
-      - cart
-      - shipping
+    - catalogue
+    - user
+    - cart
+    - shipping
 
   mongodb:
     build: ./mongodb
