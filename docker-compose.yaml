@@ -1,0 +1,17 @@
+services:
+  catalogue:
+    build: ./catalogue
+    image: manikanta1808/catalogue:1.0.0
+    container_name: catalogue
+    depends_on:
+    - mongodb
+  mongodb:
+    build: ./mongodb
+    image: manikanta1808/mongodb:1.0.0
+    container_name: mongodb
+  
+networks:
+  default:
+    driver: bridge
+    name: roboshop
+    external: false #If true, we need to create the n/w manually
