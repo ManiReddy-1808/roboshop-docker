@@ -15,10 +15,12 @@ services:
     build: ./frontend
     image: manikanta1808/frontend:1.0.0
     container_name: frontend
+    ports:
+      - "80:80"
     depends_on:
       - catalogue
       - user
-      
+
   mongodb:
     build: ./mongodb
     image: manikanta1808/mongodb:1.0.0
