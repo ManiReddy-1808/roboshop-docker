@@ -14,7 +14,8 @@ EXPOSE 8080
 COPY --from=builder /app /app
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue"
-RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
+# Below is for Security hardening, we are creating a non root user and giving ownership to the app dir to that user and running the app with that user
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop 
 RUN chown -R roboshop:roboshop /app
 USER roboshop
 CMD ["node", "server.js"]
