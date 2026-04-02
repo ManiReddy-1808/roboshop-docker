@@ -4,7 +4,7 @@ WORKDIR /app
 ENV MONGO="true" \
     MONGO_URL="mongodb://mongodb:27017/catalogue" \
     REDIS_URL="redis://redis:6379"
-EXPOSE: 8080
+EXPOSE 8080
 COPY package.json .
 COPY *.js .
 RUN npm install
