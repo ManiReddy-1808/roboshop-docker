@@ -14,7 +14,8 @@ COPY --from=builder /install /usr/local
 COPY --chown=user:roboshop payment.ini  *.py requirements.txt .
 USER roboshop
 CMD ["uwsgi", "--ini", "payment.ini"]
-# Above is Hardended image: Keep only required packages, and no previliage access.
+
+# Above is Hardened image: Keep only required packages, and no privilege access.
 
 
 # FROM python:3.9
