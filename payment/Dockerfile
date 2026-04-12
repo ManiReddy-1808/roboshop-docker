@@ -1,4 +1,4 @@
-FROM python:3.9.25-alpine3.22
+FROM python:3.9.25-alpine3.22 AS builder
 WORKDIR /app
 RUN apk add --no-cache build-base linux-headers pcre-dev
 COPY requirements.txt .
@@ -14,6 +14,8 @@ COPY --from=builder /install /usr/local
 COPY --chown=user:roboshop payment.ini  *.py requirements.txt .
 USER roboshop
 CMD ["uwsgi", "--ini", "payment.ini"]
+# Above is Hardended image: Keep only required packages, and no previliage access.
+
 
 # FROM python:3.9
 # EXPOSE 8080
